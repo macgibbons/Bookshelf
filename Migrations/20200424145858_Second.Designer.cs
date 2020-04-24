@@ -4,14 +4,16 @@ using Bookshelf.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookshelf.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200424145858_Second")]
+    partial class Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,23 +79,6 @@ namespace Bookshelf.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genre");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Title = "Horror"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Title = "Mystery"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Title = "Romance"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -319,13 +304,13 @@ namespace Bookshelf.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0ad87b2a-bf4e-4140-8944-3dd4ea2b55c6",
+                            ConcurrencyStamp = "5dcc0401-f078-48cc-acbb-01fd5c25f8ae",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECYUBfH0tCGdBnIJkm+fGsTQnVzgWwN0YXjHkTsYygFGW9IOgfADVnCSZ/TZB7skXg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMi5ng0rO1oLLMjlx1JZpiU75v2dflUkgxIguuTTR5yztwMjqD84UrqApKxCXR0JEQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -345,7 +330,7 @@ namespace Bookshelf.Migrations
             modelBuilder.Entity("Bookshelf.Models.BookGenre", b =>
                 {
                     b.HasOne("Bookshelf.Models.Book", "Book")
-                        .WithMany("BookGenres")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

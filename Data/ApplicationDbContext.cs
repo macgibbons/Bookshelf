@@ -42,7 +42,24 @@ namespace Bookshelf.Data
             user.PasswordHash = passwordHash.HashPassword(user, "Admin8*");
             modelBuilder.Entity<ApplicationUser>().HasData(user);
 
+            modelBuilder.Entity<Genre>().HasData(
+              new Genre()
+              {
+                  Id = 1,
+                  Title = "Horror",
+              },
+              new Genre()
+              {
+                  Id = 2,
+                  Title = "Mystery",
+              },
+              new Genre()
+              {
+                  Id = 3,
+                  Title = "Romance",
+              });
 
+           
         }
     }
 }
